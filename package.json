@@ -1,0 +1,45 @@
+{
+  "name": "comsamarchewordpress",
+  "version": "1.0.0",
+  "description": "Base theme Wordpress by Christine GUINAUDEAU - Comsamarche",
+  "main": "index.php",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comsamarche/comsamarchewordpress.git"
+  },
+  "keywords": [
+    "Theme",
+    "wordpress"
+  ],
+  "author": "Christine GUINAUDEAU - comsamarche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/comsamarche/comsamarchewordpress/issues"
+  },
+  "homepage": "https://github.com/comsamarche/comsamarchewordpress#readme",
+  "dependencies": {
+    "KNACSS": "git@github.com:alsacreations/KNACSS.git"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "browser-sync": "^2.23.5",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-ftp": "^1.1.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-wait": "0.0.2"
+  }
+}

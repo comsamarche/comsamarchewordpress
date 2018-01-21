@@ -1,0 +1,6 @@
+.site{
+	max-width: 1600px;
+	margin: 0 auto;
+ 	@include grid(10, 1rem, $medium);
+}
+
