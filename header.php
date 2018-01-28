@@ -42,6 +42,20 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
+		<div class="header-info">
+
+			<?php if( get_theme_mod( 'address' )!=='' ): ?>
+						<p class="coord-address"><?php echo get_theme_mod( 'address' ); ?></p>
+			<?php endif; ?>
+			<?php if( get_theme_mod( 'phone' )!=='' ): ?>
+						<p class="coord-phone"><?php echo get_theme_mod( 'phone' ); ?></p>
+			<?php endif; ?>
+			<?php if( get_theme_mod( 'email' )!=='' ): ?>
+						<p class="coord-mail"><?php echo get_theme_mod( 'email' ); ?></p>
+			<?php endif; ?>
+
+		</div>
+
 		<nav id="site-navigation" class="main-navigation col-10">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'maudtheme' ); ?></button>
 			<?php
