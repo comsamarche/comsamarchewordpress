@@ -5,16 +5,18 @@
  * @package MaudTheme
  */
 
+ 	$i = 1;
+
 ?>
 
-	<section id="actes">
+	<section id="actes" class="acte_wrap active_<?php echo $i; ?>">
 		<?php
-			$i = 1;
 			while (get_field('acte_'.$i.'_nom')):
 		?>
 			<p><?php the_field('acte_'.$i.'_nom'); ?></p>
 			<h2><?php the_field('acte_'.$i.'_titre'); ?></h2>
 			<p><?php the_field('acte_'.$i.'_resum'); ?></p>
+			<a href="<?php the_field('acte_'.$i.'_url'); ?>"><span class="acte_more acte_<?php echo $i; ?>'">More</span>En savoir +</a>
 		<?php
 			$i++;
 			endwhile;
