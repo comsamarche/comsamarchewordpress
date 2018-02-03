@@ -1,6 +1,7 @@
 .site{
-	max-width: 1600px;
-	margin: 0 auto;
- 	@include grid(10, 1rem, $medium);
+	 @extend .max_width;
+	 width: 100%;
+	 @include grid(10, 0 1rem, $medium);
+	 padding-bottom: $spacer-large*2;
 }
 

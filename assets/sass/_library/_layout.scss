@@ -139,3 +139,9 @@ http://www.alsacreations.com/tuto/lire/1493-css3-flexbox-layout-module.html
 .mr-auto {
   margin: auto;
 }
+
+.max_width{
+		width: 100%;
+		max-width: $wide-large;
+		margin: 0 auto;
+}

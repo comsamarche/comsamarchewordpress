@@ -9,7 +9,7 @@
 
 ?>
 
-	<section id="actes" class="acte_wrap active_<?php echo $i; ?>">
+	<section id="actes" class="entry-content acte_wrap active_<?php echo $i; ?>">
 		<?php
 			while (get_field('acte_'.$i.'_nom')):
 		?>

@@ -47,7 +47,7 @@
 @import "_library/layout";       // alignment, modules, positionning
 @import "_library/utilities";    // width and spacers helpers
 @import "_library/responsive";   // Responsive Web Design helpers
-@import "_library/wordpress"; 	// WordPress reset and basic styles
+@import "_library/wordpress"; 	 // WordPress reset and basic styles
 
 // New Grid System by default (Grid Layout). If you prefer old "Flexbox" Grid System, replace file with "_library/grillade-flex"
 // Note that none of these file is prefixed by an underscore, in order to compile them.
@@ -69,5 +69,6 @@
 // Wordpress Theme
 @import "wp/base";      				// Base
 @import "wp/header";      			// Header
+@import "wp/nav";      					// Nav
 @import "wp/content";      			// Content
 @import "wp/footer";      			// Footer

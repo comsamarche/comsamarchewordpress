@@ -24,47 +24,57 @@
 <div id="page" class="site grid-10-small-3">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'maudtheme' ); ?></a>
 
-	<header id="masthead" class="site-header col-all">
+	<header id="masthead" class="site-header col-all grid">
 		<div class="site-branding">
 			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			//the_custom_logo();
+			if ( is_front_page() ) : ?>
+				<h1 class="site-title">
 			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<div class="site-title">
+			<?php endif; ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+				<strong><?php bloginfo( 'name' ); ?></strong>
 			<?php
-			endif;
-
 			$description = get_bloginfo( 'description', 'display' );
 			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+				<span class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></span>
 			<?php
 			endif; ?>
+			</a>
+			<?php if ( is_front_page() ) : ?>
+				</h1>
+			<?php else : ?>
+				</div>
+			<?php endif; ?>
+
 		</div><!-- .site-branding -->
 
 		<div class="header-info">
 
+			<p class="h5-like">ADRESSE DU CABINET</p>
 			<?php if( get_theme_mod( 'address' )!=='' ): ?>
 						<p class="coord-address"><?php echo get_theme_mod( 'address' ); ?></p>
 			<?php endif; ?>
-			<?php if( get_theme_mod( 'phone' )!=='' ): ?>
-						<p class="coord-phone"><?php echo get_theme_mod( 'phone' ); ?></p>
-			<?php endif; ?>
-			<?php if( get_theme_mod( 'email' )!=='' ): ?>
-						<p class="coord-mail"><?php echo get_theme_mod( 'email' ); ?></p>
-			<?php endif; ?>
 
 		</div>
+		<div class="header-phone">
+			<?php if( get_theme_mod( 'phone' )!=='' ): ?>
+					<p class="coord-phone"><?php echo get_theme_mod( 'phone' ); ?></p>
+			<?php endif; ?>
+		</div>
 
-		<nav id="site-navigation" class="main-navigation col-10">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'maudtheme' ); ?></button>
-			<?php
-				wp_nav_menu( array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				) );
-			?>
-		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+
+	<nav id="site-navigation" class="main-navigation col-all">
+		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'maudtheme' ); ?></button>
+		<?php
+			wp_nav_menu( array(
+				'theme_location' => 'menu-1',
+				'menu_id'        => 'primary-menu',
+				'menu_class'	 => 'flex-container'
+			) );
+		?>
+	</nav><!-- #site-navigation -->
 
 	<div id="content" class="site-content col-all">

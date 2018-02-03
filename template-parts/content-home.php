@@ -13,11 +13,6 @@ $field_type = [];
 
 
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-content">
 
 		<?php
 			if( $fields ):
@@ -42,8 +37,5 @@ $field_type = [];
 				get_template_part( 'template-parts/section', $value );
 			endforeach;
 		?>
-
-
-	</div><!-- .entry-content -->
 
 </article><!-- #post-<?php the_ID(); ?> -->
