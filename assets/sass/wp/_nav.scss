@@ -3,13 +3,19 @@
  * NAV LAYOUT
  */
 .main-navigation{
-
+	position: relative;
+	z-index: 4;
 	@extend .max_width;
 	color: #d7c8b5;
-	display: grid;
-	grid-auto-rows: 1;
+
 	transition: all .3s ease-in-out;
+	margin-bottom: 2px;
+	@media (min-width: $small) {
+		display: grid;
+		grid-auto-rows: 1;
+	}
 	@media (min-width: $medium) {
+		z-index: 1;
 		grid-auto-columns: auto 25% 20%;
 	}
 	@media (min-width: $extra-large ) {
@@ -18,17 +24,37 @@
 }
 
 .menu-toggle{
+	$w : 15vw;
+
 	position: fixed; z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	top: 0;
 	right: 0;
-	width: 20%;
+	width: $w;
+	background-color: $blackT;
+	padding-bottom: 5rem ;
+	@media (min-width: $small){
+		padding-bottom: 4rem ;
+	}
 	@media (min-width: $medium) { display: none; }
+
+	i{
+		position: absolute;
+		top:50%; right: 50%;
+		transform: translate3d(35%, -50%, 0) scale(2);
+	}
 }
+#primary-menu{
+	padding-left: 0;
+}
+
 .nav-menu{
 	position: fixed; z-index: 998;
 	top:0;
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	margin: 0;
 	padding-left: 0;
 	flex-direction: column;
@@ -37,12 +63,15 @@
 
 	@media (min-width: $medium) {
 		width: 100%;
-		height: auto;
+		min-height: auto;
+		padding-top: $spacer-medium;
 		position: relative;
 		transition: none;
 		transform: translateX(0);
 		flex-direction: row;
 	}
+
+	@media (min-width: $large) { padding-top: $spacer-large;}
 
 	li, li a{
 		display: block;
@@ -53,6 +82,10 @@
 		@media (min-width: $wide-large) { min-width: 300px; max-width: 300px; }
 	}
 	li a{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
 		padding: $spacer-large $spacer-medium;
 	}
 
@@ -62,21 +95,60 @@
  /**
  * DESIGN
  */
-.main-navigation{
-	background-color: $blackT;
+.menu-toggle{
+	background-color: transparent;
+	color:$gray-100;
+
+	&:focus{
+		outline: none;
+	}
+	&:hover{
+		background-color: $redT;
+	}
 }
+
 .nav-menu{
 	background-color: $blackT;
 	a{
+		font-weight: 500;
 		text-align: center;
 		text-decoration: none;
 		color: $gray-100;
 		text-transform: uppercase;
+		transition: all .3s ease-in-out .1s;
+
+		&:hover{
+			background-color: darken($blackT, 5%);
+		}
 	}
+
+	@media (min-width: $medium) {
+		background-color: transparent;
+		background-image: linear-gradient(to right, $blackT 1%, rgba($blackT, .85) 10%);
+		li:first-child(){ display: none; }
+	}
+
 	li:last-child(){
-		background-color: $gray-100;
-		a{ color: $blackT;}
+	//	background-color: rgba( $redT , .3);
+	//	a{ color: $blackT;}
 	}
+
+	li.current-menu-item a{
+		background-color: $redT;
+	}
+
+	@media (max-width: $medium - 1px) {
+		li{
+			display: block;
+			flex-grow: 0;
+
+			a{
+				border-bottom: 1px solid $redT;
+			}
+		}
+
+	}
+
 }
 
 
@@ -84,8 +156,11 @@
 *  ANIMATION
 */
 .main-navigation.toggled{
+
 	.nav-menu{
 		transform: translateX(0);
+
 	}
+
 }
 

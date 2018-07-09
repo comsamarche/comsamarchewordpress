@@ -120,29 +120,52 @@ function maudtheme_scripts() {
 	wp_enqueue_style( 'maudtheme-style', get_stylesheet_uri() );
 
 	wp_enqueue_style( 'font-css', '//fonts.googleapis.com/css?family=Ubuntu:300,400,700|Nobile:500,700|' );
-
+	wp_enqueue_style( 'font-fontawesome', '//use.fontawesome.com/releases/v5.0.6/css/all.css' );
 	wp_enqueue_style( 'maudtheme-css', get_template_directory_uri() . '/assets/css/main.css' );
 
 	if ( !is_admin() ) {
 
-		wp_deregister_script('jquery');
+		// wp_deregister_script('jquery'); => Elementor compatibility
 		/**
 		 * For the transition between the pages
 		 */
-		wp_enqueue_script( 'barba-js', get_template_directory_uri() . '/assets/js/barba.min.js', array(), date('Ymd'), true );
-
+		//wp_enqueue_script( 'barba-js', get_template_directory_uri() . '/assets/js/lib/barba.min.js', array(), date('Ymd'), true );
 	}
-	wp_enqueue_script( 'maudtheme-js', get_template_directory_uri() . '/assets/js/main.js', array(), date('Ymd'), true );
+	//wp_enqueue_script( 'maudtheme-js', get_template_directory_uri() . '/assets/js/main.js', array(), date('Ymd'), true );
 
 	wp_enqueue_script( 'maudtheme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), date('Ymd'), true );
 
 	wp_enqueue_script( 'maudtheme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), date('Ymd'), true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'maudtheme_scripts' );
+
+/**
+ * Async Defer script
+ */
+function add_async_attribute($tag, $handle) {
+
+	$scripts_to_async = array('google-map');
+
+foreach($scripts_to_async as $async_script) {
+	if ($async_script === $handle) {
+		return str_replace(' src', ' async defer src', $tag);
+	}
+}
+return $tag;
+}
+add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+
+/**
+ * GOOGLE MAP
+ */
+function enable_goolemap() {
+	wp_enqueue_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyDc-4AxSAeXtaW3XLkOtcDFxY2JyhukA7A&callback=initMap', '', '', true);
+	wp_enqueue_script( 'google-script', get_template_directory_uri() . '/js/google-map.js', array(), date('Ymd'), true );
+}
+add_action( 'wp_enqueue_scripts', 'enable_goolemap' );
+
+
 
 /**
  * Implement the Custom Header feature.
@@ -171,3 +194,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/**
+ * Plugin human machine
+ */
+require get_template_directory() . '/machineHumanSvg.php';

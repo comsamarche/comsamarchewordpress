@@ -11,7 +11,7 @@ $small       : 576px !default;
 $medium      : 768px !default;
 $large       : 992px !default;
 $extra-large : 1200px !default;
-$wide-large  : 1600px !default;
+$wide-large  : 1440px !default;
 
 // ----------
 // Fonts zone
@@ -31,8 +31,8 @@ $font-sizes: (
     desktop : $font-size-base
   ),
   h1: (
-    mobile  : 2.8rem,
-    desktop : 3.2rem
+    mobile  : 3rem,
+    desktop : 3.6rem
   ),
   h2: (
     mobile  : 2.4rem,
@@ -142,7 +142,7 @@ $redTC			: #d21a2f;
 
 
 // Semantic colors
-$color-brand    : $redT;
+$color-brand    : $blackT;
 $color-primary  : $redT;
 $color-success  : $green-500;
 $color-info     : $blue-300;
@@ -155,7 +155,7 @@ $color-muted    : $gray-200;
 $color-base      : $blackT;
 $background-base : $blackT;
 
-$forms-color     : $gray-800;
+$forms-color     : $redT;
 
 // ---------------
 // Components zone

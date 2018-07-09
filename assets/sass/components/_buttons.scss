@@ -155,3 +155,53 @@ button {
     }
   }
 }
+
+.btn--split{
+
+	display: flex;
+	padding: 0;
+
+	@media (max-width: ($small - 1px)) {
+		min-height:6em;
+		min-width: 100%;
+	}
+
+	span, i{
+		display: flex;
+		width: 80%;
+		align-items: center;
+		padding: $spacer-medium;
+		@media (min-width: $large) {
+				padding: $spacer-large;
+		}
+	}
+
+	span{
+			background-color: $color-brand ;
+	}
+
+	i{
+			width: 25%;
+			border-left: $gray-100 solid 1px;
+			&:before{
+				position: absolute;
+				transform: scale(2);
+			}
+	}
+
+}
+a.btn--split{
+	color: $gray-100;
+	&:hover,&:focus{
+		color: $gray-100;
+		text-decoration: none;
+	}
+	&.btn--split-invert.btn--primary{
+		span{ background-color: $color-primary; }
+		i{ background-color: $blackT; }
+		&:hover,&:focus{
+			span{ background-color: $redT; }
+		}
+
+	}
+}

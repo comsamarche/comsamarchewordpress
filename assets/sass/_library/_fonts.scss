@@ -4,3 +4,68 @@
 		url("../fonts/ErasITC-Light/ErasITC-Light.woff") format("woff");
 	font-weight: normal; font-style: normal;
 }
+
+
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 05/02/2018 22:48
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("../fonts/flaticon/Flaticon.eot");
+  src: url("../fonts/flaticon/Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/flaticon/Flaticon.woff") format("woff"),
+       url("../fonts/flaticon/Flaticon.ttf") format("truetype"),
+       url("../fonts/flaticon/Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("../fonts/flaticon/Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+	%fi:before,
+	.fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+$icon-list: (
+	(placeholder, 		"\f100"),
+	(envelope, 			"\f101"),
+	(left-arrow, 		"\f102"),
+	(right-arrow, 		"\f103"),
+	(plus-symbol, 		"\f104"),
+	(letter-x, 			"\f105"),
+	(up-arrow, 			"\f106"),
+	(smartphone, 		"\f107"),
+	(download-arrow, 	"\f108"),
+	(paper-plane, 		"\f109"),
+	(open-envelope, 		"\f10a"),
+	(reload, 			"\f10b"),
+	(download-arrow-1, 	"\f10c"),
+) !default;
+
+  @each $name, $gyph in $icon-list{
+    .flaticon-#{$name}{
+	  @extend %fi;
+	  &:before{
+		  content: $gyph;
+	  }
+    }
+  }

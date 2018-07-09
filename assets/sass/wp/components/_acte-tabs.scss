@@ -1,0 +1,233 @@
+#actes{
+
+	position: relative;
+
+	@media (min-width: $small) {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		grid-template-rows: 11vh repeat(4, .9fr);
+	}
+	@media (min-width: $medium) {
+		grid-template-rows: 33% repeat(4, 1fr);
+	}
+	@media (min-width: $large) {
+		grid-template-rows: repeat(5, 1fr);
+	}
+	&:before,&:after{display: none;}
+
+	.titre_acte, .nav_acte{
+		grid-column: 1 / -1;
+		@media (min-width: $small) { grid-column: 1 / 7; }
+		@media (min-width: $medium) {  grid-column: 1 / 6; }
+	}
+
+	.titre_acte{
+		position: relative;
+		z-index: +12;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		grid-row: 1 / 1;
+		padding: $spacer-medium;
+		padding-left: 7vw;
+		line-height: 1em;
+
+		background-color: $blackT;
+		color: $gray-100;
+
+		@media (min-width: $extra-large) {
+		//	padding: $spacer-large;
+			padding-left: 22%;
+		}
+		strong{
+			@media (min-width: $large) {
+				position: absolute;
+				left: 0; bottom: 0;
+				transform: rotate(-90deg) translate3d(-1em,-0.5em,0);
+			}
+			@media (min-width: $extra-large) {
+				transform: rotate(-90deg) translate3d(-1em,0,0);
+			}
+			text-transform: uppercase;
+			font-weight: 700;
+			text-align: right;
+		}
+	}
+	.nav_acte{
+		position: relative;
+		z-index: 11;
+		background-color: $blackT;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		text-transform: uppercase;
+
+		@media (min-width: $small) {
+			padding-left: 5%;
+			grid-row: 2 / 3;
+		}
+		@media (min-width: $large) {
+			padding-left: 23%;
+		}
+		a{
+			position: relative;
+			flex: 1;
+			border: 1px solid $gray-100;
+			margin-left: -1px;
+			margin-bottom: -1px;
+			transition: background-color .3s ease-in-out;
+			background-color: $redT;
+
+			span{
+				transition: background-color .3s ease-in-out;
+				background-color: $redT;
+				box-shadow: inset -100px 0 80px rgba($redTF, .5),
+				inset 0 0 20px rgba($redTF, .5);
+			}
+
+			> *{
+				display: flex;
+				align-items: center;
+				text-align: left;
+			}
+
+			i:before{
+				transition: color .3s ease-in-out;
+			}
+
+			&.btn--primary:not(.active){
+				background-color: $gray-400;
+
+				span{
+					transition: background-color .3s ease-in-out;
+					background-color: $blackT;
+					box-shadow: none;
+				}
+
+				i:before{
+					content: "\f104";
+					color: $blackT;
+				}
+			}
+
+			@media (max-width: $small - 1px) {
+				&.active i.flaticon-right-arrow::before{
+					content: "\f108";
+				}
+			}
+		}
+	}
+
+		@for $i from 1 through 4 {
+			.nav_acte.nav_#{$i} {
+				grid-row: #{$i+1} / #{$i+2};
+			}
+		}
+
+	.wrap{
+		position: relative;
+		z-index: 0;
+		grid-column: 1 / -1;
+
+		overflow: hidden;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+
+		padding: $spacer-large;
+		background-color: $gray-100;
+
+
+		h1,h2,p{
+			text-shadow:
+				1px 1px 3px $gray-100,
+				2px 2px 3px $gray-100,
+				3px 3px 3px $gray-100,
+				4px 3px 10px $gray-100,
+				6px 4px 10px $gray-100,
+				-6px -4px 10px $gray-100
+			;
+		}
+
+		.text_content{
+			max-height: 0;
+			overflow: hidden;
+		}
+
+		@media (min-width: $small) {
+			max-height: initial;
+			grid-column: 7 / -1;
+			grid-row: 1 / -1;
+		}
+		@media (min-width: $medium) {
+			grid-column: 6 / -1;
+			padding-bottom: 10rem;
+			//padding-bottom: $spacer-medium*2;
+			//max-height: 454px;
+
+			h1,h2,p, a{ width: 60%; }
+
+			a{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+
+		}
+		@media (min-width: $extra-large) {
+			padding: $spacer-large*2;
+			padding-bottom: 10rem;
+			//padding-bottom: $spacer-large*2 + $spacer-medium;
+		}
+
+		@media (max-width: ( $small - 1)) {
+			display: none;
+		}
+
+
+		&:after{
+			content:"";
+			position: absolute;
+			top: 0; right:-$spacer-large;
+			display: block;
+			width: 100%; height: 100%;
+			background: transparent no-repeat top right;
+			background-size: 80% auto;
+			background-image: url("../img/podologie-chenut-briotet.png");
+		}
+		&.wrap_podologie:after{
+			background-image: url("../img/podologie-chenut-briotet.png");
+		}
+		&.wrap_posturologie:after{
+			background-image: url("../img/posturologie.png");
+		}
+		&.wrap_pedicure__verrues_plantaires:after{
+			background-image: url("../img/verrues-plantaires.png");
+		}
+		&.wrap_autres_actes:after{
+			background-image: url("../img/logiciel.png");
+		}
+
+	}
+
+}
+
+/**
+ * ANIMATIONS
+ */
+#actes{
+	.wrap.active{
+		z-index: 10;
+
+		@media (max-width: ( $small - 1)) {
+			display: block;
+		}
+	}
+
+	.wrap.active.open .flaticon-download-arrow::before{
+		content: "\f106";
+	}
+}

@@ -37,6 +37,18 @@ function maudtheme_customize_register( $wp_customize ) {
 	$wp_customize->remove_section("header_image");
 
 	//=============================================================
+	// Allowed breakline
+	//=============================================================
+	function test_sanitize_text( $input ) {
+	$allowed_html = array(
+		'br' => array(),
+	);
+
+	return wp_kses( $input, $allowed_html );
+	}
+
+
+	//=============================================================
 	// Header Theme information
 	//=============================================================
 	// Ajout d'une section pour le Header
@@ -48,6 +60,7 @@ function maudtheme_customize_register( $wp_customize ) {
 	'priority' => 35,
 	)
 	);
+
 	// ajout d'un réglage pour le logo
 	$wp_customize->add_setting('header_logo');
 
@@ -66,13 +79,12 @@ function maudtheme_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting('address', array(
 	'capability' => 'edit_theme_options',
-	'sanitize_callback' => 'sanitize_text_field',
+	'sanitize_callback' => 'test_sanitize_text',
 	) );
 	$wp_customize->add_control(
 		'address',
 		array(
 			'label' => 'Adresse',
-			'sanitize_callback' => 'example_sanitize_text',
 			'section' => 'header_section',
 			'settings' => 'address',
 			'type' => 'textarea'
@@ -116,6 +128,7 @@ function maudtheme_customize_register( $wp_customize ) {
 	// ajout d'un réglage pour le logo
 	$wp_customize->add_setting('footer_logo');
 
+
 	// ajout d'un contrôle d'upload de Logo
 	$wp_customize->add_control(
 	new WP_Customize_Image_Control(
@@ -141,7 +154,7 @@ function maudtheme_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_setting('footer_sstitre', array(
 	'capability' => 'edit_theme_options',
-	'sanitize_callback' => 'sanitize_text_field',
+	'sanitize_callback' => 'test_sanitize_text',
 	) );
 	$wp_customize->add_control(
 		'footer_sstitre',

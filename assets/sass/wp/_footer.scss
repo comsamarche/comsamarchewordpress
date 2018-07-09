@@ -1,3 +1,279 @@
+
+/**
+ * CONTENT LAYOUT
+ */
 .site-footer{
+	position: relative; z-index: 1;
+	@include grid(10, 0 1rem, $medium);
+	padding: $spacer-medium;
+	@media screen and (min-width: $small){ padding-bottom: $spacer-large; }
+	@media screen and (min-width: $medium){ padding-bottom: $spacer-large*2; }
+
+
+	.site-form,
+	.site-mention{
+		grid-column: 2 / 10;
+	}
+
+	.site-form{
+		position: relative;
+		margin-bottom: $spacer-medium;
+
+		&:before{
+			content:"";
+			width: 50%; height: 100%;
+			display: block;
+			position: absolute;
+			top: 10%; left:-35%;
+			background: transparent url("../img/semelle-podologie.png") no-repeat top right;
+			background-size: auto 65%;
+			transform: rotate(5deg) translateX(-50px);
+		}
+
+		> div:last-child{
+			form{
+				//display: grid;
+				@include grid(6, 0.5rem, $large);
+				padding: 0 ;
+				@media screen and (min-width: $small){ padding: 0 $spacer-medium $spacer-medium;}
+				@media screen and (min-width: $medium){ padding: 0 $spacer-large*2 $spacer-large*2;}
+
+				[class^="form_"]{margin: 0;}
+
+				@media screen and (min-width: $large){
+					.form_nom ,
+					.form_prenom ,
+					.form_email ,
+					.form_telephone{
+						grid-column: 1 / 4;
+					}
+
+					.form_nom { grid-row: 1 / span1; }
+					.form_prenom { grid-row: 2 / 3; }
+					.form_email { grid-row: 3 / 4; }
+					.form_telephone{ grid-row: 4 / 5;}
+
+					.form_message{
+						grid-column: 4 / -1;
+						grid-row: 1 / 5;
+					}
+				}
+
+
+				label,input, textarea{
+						width: 100%;
+						margin: .5rem 0;
+						padding: 2rem;
+
+						@media screen and (min-width: $medium){
+							padding: auto;
+							margin: 0;
+						}
+				}
+
+				.btn{
+					width: 100%;
+					@media (min-width: $large ){
+						grid-column: 3 / -3;
+					}
+					margin-top: 1.5rem;
+					input{
+						display: block;
+						padding: 2rem 1rem;
+					}
+				}
+				.wpcf7-form-control.g-recaptcha.wpcf7-recaptcha{ display: none; }
+			}
+		}
+		> div:first-child{
+			margin: 0 0 $spacer-large*2.5 0;
+			padding: $spacer-large;
+			@media screen and (min-width: $large){
+				margin: $spacer-large*2 0 $spacer-large*2 0;
+				padding: $spacer-large*2;
+			}
+
+		}
+	}
+
+	.site-info{
+		grid-column: 2 / -2;
+		@media screen and (min-width: $large){
+		grid-column: 2 / 7;
+		}
+	}
+	.site-coord{
+
+		margin-left: 10%;
+		padding-left: 2rem;
+		grid-column: 2 / -2;
+		@media screen and (min-width: $large){
+			padding-left: 0;
+			margin-left: 0;
+			grid-column: 7 / 10;
+		}
+	}
+
+	.site-mention{
+		margin-top: $spacer-large + $spacer-medium;;
+	}
+
+
+	.flex-container{
+		justify-content: center;
+		align-items: center;
+	}
+	blockquote{
+		&::before{ display: none; }
+		width: 100%;
+		margin: 0;
+		padding-left: 0;
+		&.flex-item-fluid, &.item-fluid{
+			flex: none;
+			@media (min-width: $large) {
+				flex: 1 1 0%;
+			}
+		}
+
+		@media (min-width: $large){
+			width: auto;
+			max-width: 480px;
+			*{
+				width: 100%;
+				padding-right: $spacer-large;
+			}
+			h2{
+				font-size: 2em;
+				line-height: 1.2;
+			}
+		}
+		a{
+			text-decoration: none;
+		}
+		strong{
+			display: block;
+			color: $blackT;
+			font-weight: 800;
+			font-size: 1.3em;
+			margin: 1em auto;
+		}
+	}
+
+	#map {
+		width: 100%;
+		height: 35vh;
+		opacity: .95;
+		@media (min-width: $large){
+			width: 35vh;
+		}
+
+
+		#firstHeading{
+			font-size: 1em;
+		}
+
+		.gmnoprint{
+			display: none;
+		}
+
+
+	}
+
+}
+
+
+/**
+ * DESIGN
+ */
+ .site-footer{
+
+	background-color: $blackT;
 	color: #d7c8b5;
+	text-align: center;
+	font-size: .9em;
+	@media screen and (min-width: $large){
+		font-size: 1em;
+		text-align: left;
+	}
+
+
+	blockquote{
+		h2{
+			text-transform: uppercase;
+		}
+	}
+
+	.site-form > div:first-child{
+		background-image:  linear-gradient(to left, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
+	}
+
+	.flaticon-open-envelope{
+		position: relative;
+		&:before{
+		position: absolute;
+		left:50%; top: -12rem;
+		font-size: 10rem;
+		transform: translateX(-50%);
+		color: $color-primary;
+		}
+	}
+
+	.site-info,
+	.site-coord,
+	.site-mention{
+		font-size: 1.2em;
+		color: $gray-200;
+	}
+
+	.site-info{
+		h3{ color: $gray-100; padding-bottom: $spacer-small ; }
+	}
+
+	.site-coord{
+		text-align: left;
+	}
+
+	.flaticon-envelope,
+	.flaticon-smartphone,
+	.flaticon-placeholder{
+		padding-left: 1rem;
+		position: relative;
+		&:before{
+			position: absolute;
+			left: -2.5rem;
+			color: black;
+			font-size: 2rem;
+			max-width: 2rem;
+			margin-right: .5em;
+		}
+		@media (min-width: $medium){
+			padding-left: 2.5rem;
+			&:before{
+				left: -2.5rem;
+				font-size: 3rem;
+				max-width: 3rem;
+			}
+		}
+	}
+	.flaticon-placeholder:before{
+		font-size: 2rem;
+		text-indent: -.6rem;
+		@media (min-width: $medium){
+			font-size: 3.5rem;
+		}
+	}
+	.flaticon-smartphone{text-indent: -.2rem;}
+
+	.site-mention{
+		font-size: 1em;
+		a{
+			color: $gray-200;
+			text-decoration: none;
+		}
+		a:hover, a:focus{
+			color: $beigeT;
+
+		}
+	}
+
 }

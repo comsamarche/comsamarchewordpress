@@ -54,3 +54,10 @@ $bp-aliases: (
         + "Please make sure it is defined in `$breakpoints` map.";
   }
 }
+
+
+@mixin clear-marges() {
+		margin: 0;
+		padding: 0;
+		border: none;
+}

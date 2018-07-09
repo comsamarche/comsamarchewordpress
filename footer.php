@@ -14,17 +14,38 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer col-all">
+
+		<div class="site-form">
+			<div class="flex-container">
+				<blockquote class="flex-item-fluid">
+					<h2>
+					Prendre rendez-vous<br/>
+					avec votre podologue</h2>
+					<p>
+					Maud Chenut-Briotet <br/>
+					vous reçoit à son cabinet<br/>
+					de 8h à 19h <br/>
+					au 33 Rue de la Libération<br/>
+					21240 Talant</p>
+					<p>	Consultations uniquement sur rendez-vous<br/>
+					<a href="tel:0380590775"><strong>Tél : 03 80 59 07 75</strong></a>
+				</p>
+				</blockquote>
+				<div id="map"></div>
+			</div>
+
+			<div class="flaticon-open-envelope">
+			<?php echo do_shortcode('[contact-form-7 id="45" title="Pied de page contact"]');?>
+			</div>
+		</div>
+
 		<div class="site-info">
 
-			<?php if( get_theme_mod( 'footer_logo' )!=='' ): ?>
-						<img src="<?php echo esc_url( get_theme_mod( 'footer_logo' )) ?>">
-			<?php endif; ?>
-
 			<?php if( get_theme_mod( 'footer_titre' )!=='' ): ?>
-						<p><?php echo get_theme_mod( 'footer_titre' ); ?></p>
+						<h3><?php echo get_theme_mod( 'footer_titre' ); ?></h3>
 			<?php endif; ?>
 			<?php if( get_theme_mod( 'footer_sstitre' )!=='' ): ?>
-						<p><?php echo get_theme_mod( 'footer_sstitre' ); ?></p>
+						<p><?php echo nl2br(get_theme_mod( 'footer_sstitre' )); ?></p>
 			<?php endif; ?>
 
 		</div><!-- .site-info -->
@@ -32,33 +53,30 @@
 		<div class="site-coord">
 
 			<?php if( get_theme_mod( 'address' )!=='' ): ?>
-						<p class="coord-address"><?php echo get_theme_mod( 'address' ); ?></p>
+						<p class="coord-address flaticon-placeholder">
+							<?php echo nl2br(get_theme_mod( 'address' )); ?></p>
 			<?php endif; ?>
 			<?php if( get_theme_mod( 'phone' )!=='' ): ?>
-						<p class="coord-phone"><?php echo get_theme_mod( 'phone' ); ?></p>
+						<p class="coord-phone flaticon-smartphone"><?php echo get_theme_mod( 'phone' ); ?></p>
 			<?php endif; ?>
 			<?php if( get_theme_mod( 'email' )!=='' ): ?>
-						<p class="coord-mail"><?php echo get_theme_mod( 'email' ); ?></p>
+						<p class="coord-mail flaticon-envelope"><?php echo get_theme_mod( 'email' ); ?></p>
 			<?php endif; ?>
 
 		</div>
 
 		<div class="site-mention">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'maudtheme' ) ); ?>"><?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'maudtheme' ), 'WordPress' );
-			?></a>
-			<span class="sep"> | </span>
-			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'maudtheme' ), 'maudtheme', '<a href="http://www.comsamarche.com">Christine GUINAUDEAU - Comsamarche</a>' );
-			?>
+			<?php echo date('Y'); ?> © Copyright <span class="sep"> - </span> Maud Chenut-Briotet <span class="sep"> - </span><a href="<?php echo esc_url( __( './mentions-legales/', 'maudtheme' ) ); ?>">Mentions légales</a>
+			<span class="sep"> - </span>
+			<a href="http://www.comsamarche.com">Conception Comsamarche.com</a>
 		</div>
 
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+<!--FOOTER-->
 <?php wp_footer(); ?>
-
+<script data-main="<?php echo get_template_directory_uri(); ?>/assets/js/main.js" src="<?php echo get_template_directory_uri(); ?>/assets/js/require.js"></script>
+<!--FINFOOTER-->
 </body>
 </html>

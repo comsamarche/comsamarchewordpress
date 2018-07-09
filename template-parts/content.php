@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('presentation entry-content'); ?>>
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -28,7 +28,7 @@
 
 	<?php maudtheme_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div>
 		<?php
 			the_content( sprintf(
 				wp_kses(
@@ -43,6 +43,12 @@
 				get_the_title()
 			) );
 
+			if (get_field('publi_link')):
+				?>
+				<a class="btn btn--primary btn--split" href="<?php the_field('publi_link') ?>" target="_blank"><span>Voir la publication</span><i class="flaticon-right-arrow"></i></a>
+				<?php
+			endif;
+
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'maudtheme' ),
 				'after'  => '</div>',
@@ -50,7 +56,4 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php maudtheme_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

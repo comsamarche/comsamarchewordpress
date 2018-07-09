@@ -2,14 +2,389 @@
 /**
  * CONTENT LAYOUT
  */
- .skip-link{ display: none;}
+  .skip-link{ display: none;}
+  .site-content{
+	  position: relative;
+	  min-height: 50vh;
+
+	  	&:before,
+		&:after{
+			content:"";
+			display: block;
+			width: 105vw;
+			height: 100vh;
+			position: absolute;
+			top:-28vh;
+			left: -15%;
+			z-index: 0;
+			@media (min-width: $small) { left: -5%; }
+			@media (min-width: $medium) { left: 0; }
+		}
+
+		&:before{
+			top:-128vh;
+			height: 200vh;
+		}
+
+  }
+
+	body:not(.home){
+
+		// .site-content{
+		// 	&:before,
+		// 	&:after{ z-index: -1;}
+		// }
+
+		.content-area{
+			position: relative;
+			z-index: 1;
+		}
+	}
 
 
 
 /**
  * DESIGN
  */
- .entry-content{
-	background-color: $beigeT;
+ .site-content{
+		background-image:  linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
+
+	&:before{
+		background-image:  linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
+		width: 120%;
+		height: 150vh;
+	}
+	&:after{
+		background-image:
+			url("../img/maud-chenu-podologie.png"),
+			url("../img/maud-chenu-podologie.png"),
+			 linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%)
+			 ;
+		background-position:
+			10% 0
+			 , 10% 0
+			 , 0 0
+		 	;
+		 //background-blend-mode: soft-light, luminosity, normal;
+		 background-blend-mode:
+			 screen
+		 	 ,exclusion
+		 	, hard-light
+			 ;
+		 background-repeat: no-repeat;
+		 background-size: auto 100%;
+		 opacity: .95;
+	}
+	*{
+		@extend .col-all;
+		position: relative; z-index: +1;
+	}
+ }
+
+
+.site-main .page{
+	display: grid;
+	grid-template-columns: repeat(6,1fr);
+	@include grid(10, 0 0, $medium);
+	margin-bottom: 0;
+
+	.entry-content{
+		background-color: $gray-300;
+		//background-color: rgba($beigeT, .9);
+	}
+
 }
 
+
+.entry-content,
+.archive .site-main{
+	position: relative;
+	margin: $spacer-medium;
+	padding: $spacer-medium;
+
+}
+
+.entry-content{
+
+	@media (min-width: $medium) {
+		margin-top: $spacer-large*2;
+		margin-bottom: $spacer-large*2;
+		padding: $spacer-large;
+		font-size: .9em;
+	}
+	@media (min-width: $extra-large) {
+		font-size: 1em;
+		padding: ($spacer-large*2);
+	}
+
+	&:after{
+		display: block;
+		position: absolute;
+		top:0; right:0;
+		bottom: 0;
+		@media (min-width: $medium) { content:""; width: 33%; }
+		background-color: $gray-300;
+		background-color: $beigeT;
+	}
+
+	p,h1,h2{
+		width: 100%;
+		color: lighten($beigeT , 5%);
+		@media (min-width: $medium) { color: $blackT; width: 50%; }
+	}
+
+	p:last-child(){
+		margin-bottom: $spacer-medium;
+		@media (min-width: $medium) {
+			margin-bottom: $spacer-large;
+		}
+	}
+
+}
+
+.entry-content{
+	&.full-content{
+		margin: 0;
+		background-image: linear-gradient(to right, $gray-100 15% , $beigeT 100%);
+		min-height: 50vh;
+
+		@media (min-width: $medium) {
+			padding-top: $spacer-extra-large;
+			padding-left: $spacer-ultra-large + $spacer-extra-large;
+			&::after{
+				width: $spacer-ultra-large;
+				right: initial;
+				left:0;
+			}
+		}
+
+
+		p,h1,h2{
+			width: 100%;
+			color: $blackT;
+		}
+
+		h1{
+			margin-bottom: $spacer-medium;
+			color: $redT;
+		}
+
+		.post-thumbnail{
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 80%;
+			height: auto;
+			img{
+				width: 100%;
+				opacity: .2;
+			}
+		}
+
+
+	}
+}
+
+
+#presentation.entry-content,
+#actes.entry-content{
+
+	grid-column: 1 / span5;
+	@media (min-width: $medium) {
+		grid-column: 3 / span5;
+	}
+	@media (min-width: $large) {
+		grid-column: 5 / span5;
+	}
+
+
+	h1,h2{
+		font-weight: 900;
+		margin-top: $spacer-medium;
+		font-size: 2.3em;
+		line-height: 1.2;
+		@media (min-width: $medium) {
+			margin-top: $spacer-large;
+		}
+		>strong{
+			display: block;
+			font-weight: 900;
+		}
+	}
+}
+
+#presentation.entry-content,
+.presentation{
+	position: relative;
+	padding-bottom: 0;
+	box-shadow: 2em 0em 10em $blackT;
+	grid-column: 2 / -1;
+
+
+	background-color: $beigeT;
+
+	&:after{
+		background-color: $gray-300;
+	}
+
+	@media (max-width: ($small - 1px)) {
+		 margin: 100px  0 100px $spacer-medium ;
+		 box-shadow: 1em 0em 5em rgba($beigeT, .8);
+
+		&::before{
+			content:"";
+			display: block; width: 100%;
+			top:0; left:0; right: 0; bottom: 0;
+			position: absolute;
+			background-image: url("../img/planche_pied.png");
+			background-blend-mode: screen;
+			opacity: .3;
+		}
+
+	 }
+	@media (min-width: $small) {
+		grid-column: 3 / -1 ; margin-right: 0;
+		background-image: url("../img/planche_pied.png");
+		background-blend-mode: screen;
+	}
+	@media (min-width: $large) {
+		grid-column: 4 / -1 ;
+	}
+	@media (min-width: $extra-large) {
+		grid-column: 5 / -1 ;
+	}
+
+	img{
+		width: 80%;
+		float: right;
+		margin-left: $spacer-small;
+		margin-bottom: $spacer-small;
+		@media (min-width: $small) { width:60%; margin-left: $spacer-tiny; }
+		@media (min-width: $medium) { width:50%; margin-left: $spacer-tiny; }
+		@media (min-width: $extra-large) { margin-left: $spacer-medium;}
+	}
+
+	.btn{
+		position: relative;
+		margin-left: 50%;
+		transform: translateX(-50%);
+		width: 50%;
+		margin-top: $spacer-medium;
+		@media (min-width: $medium) {
+			margin-top: $spacer-large;
+		}
+	}
+
+}
+
+#presentation.entry-content{
+
+	background-color: rgba($blackT, .2);
+	@media (min-width: $medium) {
+		background-color: $gray-300;
+	}
+
+	@media (min-width: $medium) {
+		background-color: $beigeT;
+	}
+
+	&:after{
+		background-color: $gray-300;
+	}
+
+}
+
+
+#actes.entry-content{
+
+	grid-column: 1 / -1;
+	//@include grid(10, 0 1rem, $medium);
+	margin: 0;
+	background-image: linear-gradient(to right, $gray-100 15% , $beigeT 100%);
+
+	@media (min-width: $large) {
+		.btn[data-active="pedicure__verrues_plantaires"] {
+				min-height: 7vh;
+				> *{
+				padding-top: 3rem;
+				padding-bottom: 3rem;
+
+				}
+		}
+	}
+
+	h1,h2{
+		font-family: $font-family-base;
+		font-size: 1.8em;
+		font-weight: 500;
+		color: $redT;
+		text-transform: uppercase;
+		line-height: 1.2;
+	}
+
+}
+
+
+
+/**
+ * PAGE
+ */
+ .admin-link{
+	 position: absolute;
+	 bottom: 0;
+	 right: 0;
+ }
+
+ .page{
+	 .full-content{
+		 .imgdecallee{
+			 &::after{
+				 content:""; display: table;
+				 clear: both;
+			 }
+		 :not(.post-thumbnail) img:first-of-type{
+
+			 background-image:  linear-gradient(to right, #{$redTF} 0%, #{$redT} 20%, #{$redTC} 100%);
+
+			 @media (min-width: $medium) {
+				transform-origin: 0 0 0;
+				padding-left: $spacer-extra-large;
+			 	margin-bottom: $spacer-extra-large-plus + $spacer-extra-large;
+			 	transform: translate3d(-100%, 0 , 0) scale(2);
+			 }
+			 @media (min-width: $large) {float: left;}
+
+		 }
+		 }
+	 }
+ }
+
+ .archive{
+	.site-main{
+
+		@media (min-width: $medium) {
+			display: grid;
+			grid-template-columns: 50% 50%;
+		}
+		h1{ color: $gray-100;}
+
+	}
+	.entry-content{
+		&.presentation{
+			grid-column: initial;
+		}
+		div:not(.entry-meta) a{
+			@extend .btn;
+			@extend .btn--primary;
+			@extend .btn--split;
+			position: relative;
+			margin-left: 50%;
+			transform: translateX(-50%);
+			width: 80%;
+			margin-top: $spacer-medium;
+			@media (min-width: $medium) {
+				margin-top: $spacer-large;
+			}
+		}
+	}
+}

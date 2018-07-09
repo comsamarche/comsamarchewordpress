@@ -17,17 +17,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
+	<!--HEAD-->
 	<?php wp_head(); ?>
+	<!--FINHEAD-->
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="page" class="site grid-10-small-3">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'maudtheme' ); ?></a>
 
 	<header id="masthead" class="site-header col-all grid">
 		<div class="site-branding">
+			<!--TITRE-->
 			<?php
-			//the_custom_logo();
 			if ( is_front_page() ) : ?>
 				<h1 class="site-title">
 			<?php else : ?>
@@ -47,8 +50,9 @@
 			<?php else : ?>
 				</div>
 			<?php endif; ?>
+			<!--FINTITRE-->
 
-		</div><!-- .site-branding -->
+		</div>
 
 		<div class="header-info">
 
@@ -58,16 +62,21 @@
 			<?php endif; ?>
 
 		</div>
-		<div class="header-phone">
-			<?php if( get_theme_mod( 'phone' )!=='' ): ?>
-					<p class="coord-phone"><?php echo get_theme_mod( 'phone' ); ?></p>
-			<?php endif; ?>
-		</div>
+
+		<?php if( get_theme_mod( 'phone' )!=='' ): ?>
+			<a href="tel:<?php echo get_theme_mod( 'phone' ); ?>" class="header-phone">
+				<i class="fi flaticon-smartphone"></i>
+				<p class="coord-phone"><?php echo get_theme_mod( 'phone' ); ?></p>
+			</a>
+		<?php endif; ?>
+
 
 	</header><!-- #masthead -->
 
+	<!--MENU-->
 	<nav id="site-navigation" class="main-navigation col-all">
-		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'maudtheme' ); ?></button>
+		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+
 		<?php
 			wp_nav_menu( array(
 				'theme_location' => 'menu-1',
@@ -75,6 +84,8 @@
 				'menu_class'	 => 'flex-container'
 			) );
 		?>
+
 	</nav><!-- #site-navigation -->
+	<!--FINMENU-->
 
 	<div id="content" class="site-content col-all">
