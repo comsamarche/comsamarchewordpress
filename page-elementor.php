@@ -1,23 +1,21 @@
 <?php
 /**
- * The template for Homepage
- *
- 	Template Name: Homepage
+ * Template Name: Page interieure
  *
  * @package MaudTheme
+ * @subpackage Elementor plugin
+ * @since Twenty Fourteen 1.0
  */
 
 get_header(); ?>
-
-	<div id="content" class="
-	col-all">
-		<div id="primary" class="content-area" data-namespace="homepage">
+	<div id="content" class="col-all">
+		<div id="primary" class="content-area" data-namespace="page">
 			<main id="main" class="site-main">
 
 				<?php
 				while ( have_posts() ) : the_post();
 
-					get_template_part( 'template-parts/content', 'home' );
+					the_content();
 
 				endwhile; // End of the loop.
 				?>

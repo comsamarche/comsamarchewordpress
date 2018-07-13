@@ -1,0 +1,44 @@
+.site-main > .elementor{
+
+	.elementor-widget-heading{
+		border-bottom: 1px dotted darken($beigeT, 30%);
+	}
+	.elementor-heading-title{
+		position: relative;
+		display: inline-block;
+		@include font-size(h1);
+		padding-bottom: .5em;
+		text-transform: uppercase;
+		text-shadow: 0px 2px 3px $beigeT;
+
+		&:after{
+			content:"";
+			display: block;
+			width: 100%; height: 5px;
+			position: absolute;
+			bottom: -1px;
+			background-color: $redT;
+		}
+	}
+
+	.gray-container{
+		background-image: linear-gradient(to right, $gray-100 15% , $beigeT 100%);
+	}
+
+	.gray-container-invert{
+		background-image: linear-gradient(to left, $gray-100 15% , $beigeT 100%);
+	}
+
+	.red-container{
+		background-image: linear-gradient(to left, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
+	}
+	.elementor-widget-icon-box{
+		display: flex;
+		align-items: center;
+		background-color: $redT;
+		box-shadow: inset -100px 0 80px rgba($redTF, .5),
+		inset 0 0 20px rgba($redTF, .5);
+		border: 1px solid $beigeT;
+	}
+
+}

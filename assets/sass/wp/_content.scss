@@ -3,11 +3,10 @@
  * CONTENT LAYOUT
  */
   .skip-link{ display: none;}
-  .site-content{
+  #content{
 	  position: relative;
 	  min-height: 50vh;
 
-	  	&:before,
 		&:after{
 			content:"";
 			display: block;
@@ -21,12 +20,22 @@
 			@media (min-width: $medium) { left: 0; }
 		}
 
-		&:before{
-			top:-128vh;
-			height: 200vh;
-		}
-
   }
+    #content.site-content{
+		&:before{
+			content:"";
+			display: block;
+			width: 105vw;
+			height: 200vh;
+			position: absolute;
+			top:-128vh;
+
+			left: -15%;
+			z-index: 0;
+			@media (min-width: $small) { left: -5%; }
+			@media (min-width: $medium) { left: 0; }
+		}
+	}
 
 	body:not(.home){
 
@@ -46,19 +55,12 @@
 /**
  * DESIGN
  */
- .site-content{
-		background-image:  linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
-
-	&:before{
-		background-image:  linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
-		width: 120%;
-		height: 150vh;
-	}
+ #content{
 	&:after{
 		background-image:
 			url("../img/maud-chenu-podologie.png"),
 			url("../img/maud-chenu-podologie.png"),
-			 linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%)
+			linear-gradient(to top, #{$blackT} 20%,  #000 100%)
 			 ;
 		background-position:
 			10% 0
@@ -75,6 +77,24 @@
 		 background-size: auto 100%;
 		 opacity: .95;
 	}
+ }
+
+
+  #content.site-content{
+		background-image:  linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
+	&:after{
+		background-image:
+			url("../img/maud-chenu-podologie.png"),
+			url("../img/maud-chenu-podologie.png"),
+			 linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%)
+			 ;
+	}
+	&:before{
+		background-image:  linear-gradient(to right, #{$redTF} 20%, #{$redT} 60%, #{$redTC} 100%);
+		width: 120%;
+		height: 150vh;
+	}
+
 	*{
 		@extend .col-all;
 		position: relative; z-index: +1;

@@ -11,8 +11,6 @@
 
 ?>
 
-	</div><!-- #content -->
-
 	<footer id="colophon" class="site-footer col-all">
 
 		<div class="site-form">
@@ -76,7 +74,6 @@
 
 <!--FOOTER-->
 <?php wp_footer(); ?>
-<script data-main="<?php echo get_template_directory_uri(); ?>/assets/js/main.js" src="<?php echo get_template_directory_uri(); ?>/assets/js/require.js"></script>
 <!--FINFOOTER-->
 </body>
 </html>

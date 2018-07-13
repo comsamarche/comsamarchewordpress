@@ -87,5 +87,3 @@
 
 	</nav><!-- #site-navigation -->
 	<!--FINMENU-->
-
-	<div id="content" class="site-content col-all">
