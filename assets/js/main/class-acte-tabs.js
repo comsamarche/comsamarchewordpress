@@ -11,7 +11,6 @@
  */
 
 
-define(['require', 'TweenMax'], function (require, TweenMax) {
 	"use strict";
 
 		/**
@@ -146,6 +145,5 @@ define(['require', 'TweenMax'], function (require, TweenMax) {
 			}
 		};
 
-		return ActeTabs;
-
-	});
+		var acteTabs = new ActeTabs();
+		if (document.querySelector('.acte_wrap')) acteTabs.init();

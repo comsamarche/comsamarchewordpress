@@ -41,13 +41,8 @@ define(['require', 'Barba', 'TweenMax', 'acteTabs'], function (require, Barba, T
 
 			this.checkurl = function(){
 				var newUrl = Barba.Pjax.getCurrentUrl();
-				// console.log('newUrl', newUrl);
 				var regexp = "/wp-admin/";
 
-				// if (newUrl === "http://localhost:3000/") {
-				// 	//console.log('home', Barba.Pjax.Cache);
-				// 	//Barba.Pjax.Cache.reset();
-				// }
 				if (newUrl.match(regexp) !== null) {
 					Barba.Pjax.goTo(newUrl)
 					return false;
@@ -62,8 +57,6 @@ define(['require', 'Barba', 'TweenMax', 'acteTabs'], function (require, Barba, T
 				if (!(document.getElementById(this.el.id) && document.getElementsByClassName(this.el.class)))
 					return console.log('not BarbaTransition');
 
-				//console.log('BarbaTransition init', Barba);
-
 				Barba.Pjax.Dom.wrapperId = this.el.id;
 				Barba.Pjax.Dom.containerClass = this.el.class;
 				Barba.Pjax.start();
@@ -75,133 +68,79 @@ define(['require', 'Barba', 'TweenMax', 'acteTabs'], function (require, Barba, T
 						head: newPageRawHTML.match(_this.regex.head)[1],
 						titre: newPageRawHTML.match(_this.regex.titre)[1],
 						footer: newPageRawHTML.match(_this.regex.footer)[1],
-						menu: newPageRawHTML.match(_this.regex.menu)[1]
+					//	menu: newPageRawHTML.match(_this.regex.menu)[1]
 					}
 					var bodyClass = _this.datas.body.replace('class="', '')
 													.replace('"', '');
 					document.querySelector('body').removeAttribute('class');
 					document.querySelector('body').setAttribute('class', bodyClass);
-					document.querySelector('#primary-menu').innerHTML = _this.datas.menu;
-
 					var acteTabs = new ActeTabs();
 					if( document.querySelector('.acte_wrap') ) acteTabs.init();
-
 				});
+
 
 			},
 
 			this.init = function () {
 
 				var _this = this;
-				this.render();
 
-				Barba.Pjax.getTransition = function () {
-					_this.checkurl();
-					return _this.HideShowTransition;
-				};
+				this.Homepage.animMenu = this.animMenu;
+				this.Page.animMenu = this.animMenu;
 
 				this.Homepage.init();
 				this.Page.init();
-				// /**
-				//  * Change Footer
-				//  */
-				// var Body = document.querySelector('body').innerHTML;
-				// Body = Body.replace(this.regex.head, this.datas.head);
-				// Body = Body.replace(this.regex.titre, this.datas.titre);
-				// Body = Body.replace(this.regex.footer, this.datas.footer);
+
+				Barba.Dispatcher.on('linkClicked', function (HTMLElement, MouseEvent) {
+					var idPage = HTMLElement.parentNode.id;
+					document.querySelectorAll('#site-navigation li').forEach(function (el) {
+						if (el.classList.contains('current-menu-item')) el.classList.remove('current-menu-item');
+						if (el.id === idPage) el.classList.add('current-menu-item');
+					});
+				});
+
+				this.render();
 
 			},
-
-			this.HideShowTransition = Barba.BaseTransition.extend({
-				start: function () {
-
-					this.fadeOut(this.oldContainer);
-					//this.newContainerLoading.then(this.finish.bind(this));
-
-					// As soon the loading is finished and the old page is faded out, let's fade the new page
-					Promise
-						.all([this.newContainerLoading])
-						.then(this.fadeIn.bind(this))
-						.then(this.finish.bind(this));
-				},
-
-				finish: function () {
-					document.querySelector('body').scrollTop = 0;
-					this.done();
-				},
-
-				fadeOut: function (el) {
-					/**
-					 * this.oldContainer is the HTMLElement of the old Container
-					 */
-					//document.querySelector('.loader:not(active)').classList.add('active');
-					return TweenMax.to(el, 1, {opacity: 0});
-				},
-
-				fadeIn: function () {
-					/**
-					 * this.newContainer is the HTMLElement of the new Container
-					 * At this stage newContainer is on the DOM (inside our #barba-container and with visibility: hidden)
-					 * Please note, newContainer is available just after newContainerLoading is resolved!
-					 */
-
-					var _this = this;
-					var $el = this.newContainer;
-
-					//this.oldContainer.style.display = "none";
-
-					// $el.style.visibility = 'visible';
-					$el.style.opacity = 0;
-
-					/**
-					 * Hide navigation
-					 */
-					var openMenu = document.querySelector('.main-navigation.toggled');
-					if (openMenu) openMenu.classList.remove('toggled');
-
-					TweenMax.to($el, 2, { ease: Power4.easeOut, opacity: 1, onComplete: finish() });
-
-					function finish(){
-						console.log('finish');
-						//document.querySelector('.loader.active').classList.remove('active');
-					}
-
-				}
-
-			}),
 
 
 			this.Homepage = Barba.BaseView.extend({
 				namespace: 'homepage',
+				idPage: 'undefined',
 				onEnter: function () {
-					// The new Container is ready and attached to the DOM.
-					console.log('onEnter Home' , this);
+				// The new Container is ready and attached to the DOM.
+					if (!this.container.parentNode.classList.contains('site-content')) this.container.parentNode.classList.add('site-content');
 					var el = this.container.querySelector('#presentation');
 					TweenMax.fromTo(el, .8, { ease: Back.easeOut.config(3.7), css: { x: '-100vw' } }, { ease: Back.easeOut.config(3.7), css: { x: '0' } });
 				},
 				onEnterCompleted: function () {
+					var _this = this;
 					// The Transition has just finished.
-					console.log('onEnterCompleted Home test');
 				},
 				onLeave: function () {
 					// A new Transition toward a new page has just started.
-					console.log('onLeave Home');
+					console.log('onLeave Home', this);
 				},
 				onLeaveCompleted: function () {
 					// The Container has just been removed from the DOM.
-					console.log('onLeaveCompleted Home');
-				}
+					console.log('onLeaveCompleted Home', this);
+				},
 			}),
 			this.Page = Barba.BaseView.extend({
 				namespace: 'page',
+				idPage: 'undefined',
 				onEnter: function () {
+
+					var _this = this;
 					// The new Container is ready and attached to the DOM.
-					var elmnt = document.querySelector('body');
-					var y = elmnt.scrollTop;
-					console.log('onEnter Page', y);
+					if (this.container.parentNode.classList.contains('site-content')) this.container.parentNode.classList.remove('site-content');
+					var elmnt = document.querySelector('body'),
+						y = elmnt.scrollTop;
+
 				},
 				onEnterCompleted: function () {
 					// The Transition has just finished.
+					var _this = this;
 
 					var img = this.container.querySelector('.entry-content.full-content img');
 					if(img){
