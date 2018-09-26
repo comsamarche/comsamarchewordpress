@@ -9,8 +9,7 @@
 
 get_header(); ?>
 
-	<div id="content" class="
-	col-all">
+	<div id="content" class="site-content col-all">
 		<div id="primary" class="content-area" data-namespace="homepage">
 			<main id="main" class="site-main">
 
