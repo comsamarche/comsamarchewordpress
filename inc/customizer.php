@@ -85,6 +85,7 @@ function maudtheme_customize_register( $wp_customize ) {
 		'address',
 		array(
 			'label' => 'Adresse',
+			'sanitize_callback' => 'example_sanitize_text',
 			'section' => 'header_section',
 			'settings' => 'address',
 			'type' => 'textarea'

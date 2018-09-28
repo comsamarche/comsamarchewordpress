@@ -24,10 +24,10 @@
 
 <body <?php body_class(); ?>>
 
-<div id="page" class="site grid-10-small-3">
+<div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'maudtheme' ); ?></a>
 
-	<header id="masthead" class="site-header col-all grid">
+	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<!--TITRE-->
 			<?php
@@ -55,10 +55,10 @@
 		</div>
 
 		<div class="header-info">
-
-			<p class="h5-like">ADRESSE DU CABINET</p>
+			<i class="fi flaticon-placeholder"></i>
+			<p class="h5-like">ADRESSE <br/>DU CABINET</p>
 			<?php if( get_theme_mod( 'address' )!=='' ): ?>
-						<p class="coord-address"><?php echo get_theme_mod( 'address' ); ?></p>
+				<p class="coord-address"><?php echo nl2br(get_theme_mod( 'address' )); ?></p>
 			<?php endif; ?>
 
 		</div>
@@ -74,7 +74,7 @@
 	</header><!-- #masthead -->
 
 	<!--MENU-->
-	<nav id="site-navigation" class="main-navigation col-all">
+	<nav id="site-navigation" class="main-navigation">
 		<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
 
 		<?php

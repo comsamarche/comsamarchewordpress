@@ -4,15 +4,14 @@
  */
 .site-footer{
 	position: relative; z-index: 1;
-	@include grid(10, 0 1rem, $medium);
 	padding: $spacer-medium;
-	@media screen and (min-width: $small){ padding-bottom: $spacer-large; }
-	@media screen and (min-width: $medium){ padding-bottom: $spacer-large*2; }
+	@media (min-width: $small){ padding-bottom: $spacer-large; }
+	@media (min-width: $medium){ padding-bottom: $spacer-large*2; }
 
 
 	.site-form,
 	.site-mention{
-		grid-column: 2 / 10;
+		@media (min-width: $medium){ grid-column: 3 / -3;}
 	}
 
 	.site-form{
@@ -88,7 +87,7 @@
 		> div:first-child{
 			margin: 0 0 $spacer-large*2.5 0;
 			padding: $spacer-large;
-			@media screen and (min-width: $large){
+			@media (min-width: $large){
 				margin: $spacer-large*2 0 $spacer-large*2 0;
 				padding: $spacer-large*2;
 			}
@@ -97,20 +96,20 @@
 	}
 
 	.site-info{
-		grid-column: 2 / -2;
-		@media screen and (min-width: $large){
-		grid-column: 2 / 7;
+
+		@media (min-width: $large){
+			grid-column: 4 / 9;
 		}
 	}
 	.site-coord{
 
-		margin-left: 10%;
 		padding-left: 2rem;
-		grid-column: 2 / -2;
-		@media screen and (min-width: $large){
-			padding-left: 0;
+		margin-left: 10%;
+
+		@media (min-width: $large){
 			margin-left: 0;
-			grid-column: 7 / 10;
+			padding-left: 0;
+			grid-column: 10 / 13;
 		}
 	}
 
@@ -226,7 +225,7 @@
 	}
 
 	.site-info{
-		h3{ color: $gray-100; padding-bottom: $spacer-small ; }
+		.h3-like{ color: $gray-100; padding-bottom: $spacer-small ; }
 	}
 
 	.site-coord{

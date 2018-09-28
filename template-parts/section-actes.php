@@ -14,7 +14,7 @@
 ?>
 
 	<section id="actes" class="entry-content acte_wrap">
-		<div class="titre_acte h2-like"><?php the_field('acte_titre'); ?></div>
+		<h2 class="titre_acte h2-like"><?php the_field('acte_titre'); ?></h2>
 
 		<?php
 			while (get_field('acte_'.$i.'_nom')):
@@ -32,7 +32,7 @@
 		</li>
 
 		<div class="wrap wrap_<?php echo str_replace($search,$replace,strtolower ( get_field('acte_'.$i.'_nom') ) ).$class[$i]; ?>">
-			<h2><?php the_field('acte_'.$i.'_titre'); ?></h2>
+			<h3 class="acte-title"><?php the_field('acte_'.$i.'_titre'); ?></h3>
 			<div><?php the_field('acte_'.$i.'_resum'); ?></div>
 			<div class="text_content"><?php the_field('acte_'.$i.'_text'); ?></div>
 			<a class="btn btn--primary btn--split btn--split-invert" href="<?php the_field('acte_'.$i.'_url'); ?>"><i class="flaticon-download-arrow"></i><span class="acte_more acte_<?php echo $i; ?>'">En savoir +</span></a>

@@ -29,6 +29,7 @@
 		align-items: flex-start;
 		justify-content: center;
 		grid-row: 1 / 1;
+		margin-bottom: 0;
 		padding: $spacer-medium;
 		padding-left: 7vw;
 		line-height: 1em;
@@ -141,7 +142,8 @@
 		background-color: $gray-100;
 
 
-		h1,h2,p{
+		h1,h2,p,
+		.acte-title{
 			text-shadow:
 				1px 1px 3px $gray-100,
 				2px 2px 3px $gray-100,
@@ -168,7 +170,8 @@
 			//padding-bottom: $spacer-medium*2;
 			//max-height: 454px;
 
-			h1,h2,p, a{ width: 60%; }
+			h1, p, a,
+			.acte-title{ width: 60%; }
 
 			a{
 				position: absolute;

@@ -5,8 +5,21 @@
 .site{
 	 @extend .max_width;
 	 width: 100%;
-	 @include grid(10, 0 1rem, $medium);
 	 overflow: hidden;
+}
+
+.site-header{@include grid(3, 0);}
+.site-header,
+.site-content,
+.site-footer{
+
+	@include grid(16, 0, $medium);
+	@media (min-width:$medium ){
+		> *{
+			grid-column: 1/-1;
+		}
+	}
+
 }
 
 

@@ -147,7 +147,7 @@
 		background-color: $beigeT;
 	}
 
-	p,h1,h2{
+	p,h1,h2:not(.h2-like){
 		width: 100%;
 		color: lighten($beigeT , 5%);
 		@media (min-width: $medium) { color: $blackT; width: 50%; }
@@ -179,7 +179,7 @@
 		}
 
 
-		p,h1,h2{
+		p,h1,h2:not(.h2-like){
 			width: 100%;
 			color: $blackT;
 		}
@@ -218,7 +218,7 @@
 	}
 
 
-	h1,h2{
+	h1,h2:not(.h2-like),{
 		font-weight: 900;
 		margin-top: $spacer-medium;
 		font-size: 2.3em;
@@ -333,7 +333,7 @@
 		}
 	}
 
-	h1,h2{
+	.acte-title{
 		font-family: $font-family-base;
 		font-size: 1.8em;
 		font-weight: 500;

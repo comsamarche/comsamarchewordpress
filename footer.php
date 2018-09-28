@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer col-all">
+	<footer id="colophon" class="site-footer">
 
 		<div class="site-form">
 			<div class="flex-container">
@@ -40,7 +40,7 @@
 		<div class="site-info">
 
 			<?php if( get_theme_mod( 'footer_titre' )!=='' ): ?>
-						<h3><?php echo get_theme_mod( 'footer_titre' ); ?></h3>
+						<div class="h3-like"><?php echo get_theme_mod( 'footer_titre' ); ?></div>
 			<?php endif; ?>
 			<?php if( get_theme_mod( 'footer_sstitre' )!=='' ): ?>
 						<p><?php echo nl2br(get_theme_mod( 'footer_sstitre' )); ?></p>
