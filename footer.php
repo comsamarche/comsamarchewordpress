@@ -19,15 +19,12 @@
 					<h2>
 					Prendre rendez-vous<br/>
 					avec votre podologue</h2>
-					<p>
-					Maud Chenut-Briotet <br/>
-					vous reçoit à son cabinet<br/>
-					de 8h à 19h <br/>
-					au 33 Rue de la Libération<br/>
-					21240 Talant</p>
-					<p>	Consultations uniquement sur rendez-vous<br/>
+					<p class="style">
+					Maud Chenut-Briotet vous reçoit à son cabinet <br/>
+					situé au 33 Rue de la Libération, 21240 Talant.</p>
+					<p class="style">Le cabinet est <strong>ouvert du lundi au vendredi de 8h à 19h</strong>.</p>
+					<p>	Consultations uniquement sur rendez-vous</p>
 					<a href="tel:0380590775"><strong>Tél : 03 80 59 07 75</strong></a>
-				</p>
 				</blockquote>
 				<div id="map"></div>
 			</div>

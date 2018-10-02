@@ -28,7 +28,7 @@
 .button,
 [type="button"],
 button {
-  @extend %btn;
+	@extend %btn;
 
   &:focus {
     -webkit-tap-highlight-color: transparent;

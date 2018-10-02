@@ -119,7 +119,7 @@ add_action( 'widgets_init', 'maudtheme_widgets_init' );
 function maudtheme_scripts() {
 
 	wp_enqueue_style( 'maudtheme-css', get_template_directory_uri() . '/assets/css/main.css' );
-	wp_enqueue_style( 'font-css', '//fonts.googleapis.com/css?family=Ubuntu:300,400,700|Nobile:500,700|' );
+	wp_enqueue_style( 'font-css', '//fonts.googleapis.com/css?family=Ubuntu:100,300,400,700|Nobile:500,700|' );
 	wp_enqueue_style( 'font-fontawesome', '//use.fontawesome.com/releases/v5.0.6/css/all.css' );
 	wp_enqueue_style( 'maudtheme-style', get_stylesheet_uri() );
 

@@ -6,7 +6,14 @@
 	position: relative; z-index: 1;
 	padding: $spacer-medium;
 	@media (min-width: $small){ padding-bottom: $spacer-large; }
-	@media (min-width: $medium){ padding-bottom: $spacer-large*2; }
+	@media (min-width: $medium){
+		padding-top: $spacer-large;
+		padding-bottom: $spacer-large;
+	}
+	@media (min-width: $large){
+		padding-top: 0;
+		padding-bottom: $spacer-large*2;
+	}
 
 
 	.site-form,
@@ -23,9 +30,9 @@
 			width: 50%; height: 100%;
 			display: block;
 			position: absolute;
-			top: 10%; left:-35%;
+			top: 10%; left:-37.5%;
 			background: transparent url("../img/semelle-podologie.png") no-repeat top right;
-			background-size: auto 65%;
+			background-size: auto 42%;
 			transform: rotate(5deg) translateX(-50px);
 		}
 
@@ -35,7 +42,7 @@
 				@include grid(6, 0.5rem, $large);
 				padding: 0 ;
 				@media screen and (min-width: $small){ padding: 0 $spacer-medium $spacer-medium;}
-				@media screen and (min-width: $medium){ padding: 0 $spacer-large*2 $spacer-large*2;}
+				@media screen and (min-width: $large){ padding: 0 $spacer-large*2 $spacer-large*2;}
 
 				[class^="form_"]{margin: 0;}
 
@@ -71,6 +78,7 @@
 				}
 
 				.btn{
+					position: relative;
 					width: 100%;
 					@media (min-width: $large ){
 						grid-column: 3 / -3;
@@ -78,8 +86,10 @@
 					margin-top: 1.5rem;
 					input{
 						display: block;
-						padding: 2rem 1rem;
+						//padding: 2rem 1rem;
 					}
+
+					.ajax-loader{ position: absolute; right:$spacer-small; top: 50%; transform: translateY(-50%);}
 				}
 				.wpcf7-form-control.g-recaptcha.wpcf7-recaptcha{ display: none; }
 			}
@@ -98,18 +108,22 @@
 	.site-info{
 
 		@media (min-width: $large){
-			grid-column: 4 / 9;
+			grid-column: 3 / 9;
 		}
 	}
 	.site-coord{
 
+		display: inline-block;
 		padding-left: 2rem;
-		margin-left: 10%;
+		max-width: auto;
 
+		@media (min-width: $medium){
+			display: block;
+			grid-column: 5 / 13;
+		}
 		@media (min-width: $large){
-			margin-left: 0;
 			padding-left: 0;
-			grid-column: 10 / 13;
+			grid-column: 10 / 15;
 		}
 	}
 
@@ -127,6 +141,28 @@
 		width: 100%;
 		margin: 0;
 		padding-left: 0;
+
+		.style{
+			margin-bottom: 3px;
+			font-family: $font-family-headings;
+			font-size: 1.1em;
+		}
+
+		p:not(.style){
+			margin: 1em auto 0 ;
+			letter-spacing: .02em;
+		}
+
+		a{
+			margin:0;
+			padding: 0;
+			text-decoration: none;
+			strong{ text-decoration: none; font-weight: 800; color: $blackT; font-size: 1.4em;}
+		}
+		strong{
+			text-decoration: underline;
+		}
+
 		&.flex-item-fluid, &.item-fluid{
 			flex: none;
 			@media (min-width: $large) {
@@ -139,22 +175,13 @@
 			max-width: 480px;
 			*{
 				width: 100%;
-				padding-right: $spacer-large;
+				//padding-right: $spacer-large;
 			}
 			h2{
 				font-size: 2em;
-				line-height: 1.2;
+				line-height: 1;
+				margin-bottom: .6em;
 			}
-		}
-		a{
-			text-decoration: none;
-		}
-		strong{
-			display: block;
-			color: $blackT;
-			font-weight: 800;
-			font-size: 1.3em;
-			margin: 1em auto;
 		}
 	}
 

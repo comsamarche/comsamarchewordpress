@@ -30,26 +30,21 @@
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<!--TITRE-->
-			<?php
-			if ( is_front_page() ) : ?>
-				<h1 class="site-title">
-			<?php else : ?>
-				<div class="site-title">
-			<?php endif; ?>
+			<h1 class="site-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-				<strong><?php bloginfo( 'name' ); ?></strong>
-			<?php
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<span class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></span>
-			<?php
-			endif; ?>
-			</a>
-			<?php if ( is_front_page() ) : ?>
-				</h1>
-			<?php else : ?>
-				</div>
-			<?php endif; ?>
+				<?php if ( is_front_page() ) : ?>
+					<strong><?php bloginfo( 'name' ); ?>
+					<?php
+					$description = get_bloginfo( 'description', 'display' );
+					if ( $description || is_customize_preview() ) : ?>
+						<span class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></span>
+					</strong>
+				<?php else: ?>
+					<strong><?php echo get_the_title(); ?></strong>
+				<?php endif; ?>
+				</a>
+			</h1>
+
 			<!--FINTITRE-->
 
 		</div>

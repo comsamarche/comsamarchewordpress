@@ -6,6 +6,7 @@
   #content{
 	  position: relative;
 	  min-height: 50vh;
+	  overflow: hidden;
 
 		&:after{
 			content:"";
@@ -132,8 +133,11 @@
 		padding: $spacer-large;
 		font-size: .9em;
 	}
-	@media (min-width: $extra-large) {
+	@media (min-width: $large) {
+		padding: $spacer-large*2 $spacer-large;
 		font-size: 1em;
+	}
+	@media (min-width: $extra-large) {
 		padding: ($spacer-large*2);
 	}
 

@@ -18,12 +18,13 @@
 	}
 
 	@media (min-width: $medium) {
-		grid-template-columns: 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 5% 25%;
+		grid-template-columns: repeat(12,6.25%) 5% 25%;
+		grid-gap: 0 1px;
 		padding-bottom: 0;
 		padding: 2px 0 0;
 	}
 	@media (min-width: $wide-large) {
-		grid-template-columns: 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 4% 26%;
+		grid-template-columns: repeat(12,6.25%) 4% 26%;
 	}
 	// @media (min-width: $wide-large) {
 	// 	grid-auto-columns: auto 33% 25%;
@@ -50,7 +51,7 @@
 		grid-column: 1 / span 7 ;
 	}
 	@media (min-width: $large) {
-		grid-column: 1 / span 8 ;
+		grid-column: 1 / span 7 ;
 		order: 0;
 	}
 	h1,h2,h3,p,a{
@@ -87,10 +88,11 @@
 	//grid-column: 1 / 2 ;
 	grid-template-columns: 4.5rem auto;
 	@media (min-width: $medium) {
-		grid-column: span 5 / -2;
+		grid-column: span 5 / -3;
 	}
 
 	@media (min-width: $large) {
+		grid-column: span 6 / -2;
 		grid-template-columns: 4.5rem 30% auto;
 	}
 
@@ -107,11 +109,12 @@
 	@media (min-width: $medium) {
 		justify-content: flex-start;
 		grid-template-columns: 4.5rem calc( 100% - 4.5rem);
-		grid-column: span 1 / -1;
+		grid-column: span 2 / -1;
 		grid-gap: 3px;
 		padding: $spacer-medium/2;
 	}
 	@media (min-width: $large) {
+		grid-column: span 1 / -1;
 		max-width: 100%;
 	}
 	@media (min-width: $extra-large) {}

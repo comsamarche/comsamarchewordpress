@@ -6,6 +6,8 @@
 	 @extend .max_width;
 	 width: 100%;
 	 overflow: hidden;
+	@media (min-width:$medium ){ overflow: visible;}
+
 }
 
 .site-header{@include grid(3, 0);}

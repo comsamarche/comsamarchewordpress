@@ -5,7 +5,7 @@
 	@media (min-width: $small) {
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
-		grid-template-rows: 11vh repeat(4, .9fr);
+		grid-template-rows: 130px repeat(4, .9fr);
 	}
 	@media (min-width: $medium) {
 		grid-template-rows: 33% repeat(4, 1fr);
